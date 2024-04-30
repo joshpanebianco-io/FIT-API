@@ -21,21 +21,6 @@ const getUserById = async (req, res) => {
   }
 }
 
-// CREATE A NEW USER
-const createUser = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ error: 'email and password are required' });
-    }
-    const newUser = await User.create({ email, password });
-    res.status(201).json(newUser);
-  } catch (error) {
-    console.error('Error creating user:', error);
-    res.status(500).send("Server Error");
-  }
-}
-
 // UPDATE A USER
 const updateUser = async (req, res) => {
   try {
@@ -66,7 +51,6 @@ const deleteUser = async (req, res) => {
 module.exports = {
   getAllUsers,
   getUserById,
-  createUser,
   updateUser,
   deleteUser
 };
